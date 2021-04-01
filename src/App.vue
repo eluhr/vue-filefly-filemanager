@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="row">
+      <div class="col-12">
+        <navbar />
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-4">
+            <sidebar />
+          </div>
+          <div class="col-8">
+            <main-content />
+          </div>
+        </div>
+      </div>
+    </div>
+    <new-directory-modal />
+    <upload-file-modal />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapActions, mapGetters} from 'vuex'
+import MainContent from '@/components/MainContent'
+import Navbar from '@/components/Navbar'
+import NewDirectoryModal from '@/components/NewDirectoryModal'
+import UploadFileModal from '@/components/UploadFileModal'
+import Sidebar from '@/components/Sidebar'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    MainContent,
+    Navbar,
+    NewDirectoryModal,
+    Sidebar,
+    UploadFileModal
+  },
+  computed: {
+    ...mapGetters([
+      'currentDirectory'
+    ])
+  },
+  created() {
+    this.listContent(this.currentDirectory)
+  },
+  methods: {
+    ...mapActions([
+      'listContent'
+    ])
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
