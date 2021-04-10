@@ -43,11 +43,22 @@ export default {
   },
   created() {
     this.listContent(this.currentDirectory)
+    this.$eventHub.$on('SHOW_ERROR_MESSAGE_TO_USER', this.showErrorMessage)
   },
   methods: {
     ...mapActions([
       'listContent'
-    ])
+    ]),
+    showErrorMessage (errorMessage) {
+      // need "+ ''" only god knows why...
+      this.$bvToast.toast(errorMessage + '', {
+        title: this.$t('anErrorOccurred'),
+        variant: 'danger',
+        solid: true,
+        toaster: 'b-toaster-bottom-right',
+        appendToast: false
+      })
+    }
   }
 }
 </script>

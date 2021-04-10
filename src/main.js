@@ -31,6 +31,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
+/**
+ * Global event bus
+ * @type {Vue}
+ */
+Vue.prototype.$eventHub = new Vue()
+
+
 const messages = {
   en: {
     uploadAFile: 'Upload a file',
@@ -45,6 +52,7 @@ const messages = {
     selectAFile: 'Select a file',
     deleteFile: 'Delete',
     openDirectory: 'Open',
+    anErrorOccurred: 'An Error Occurred',
   }
 }
 

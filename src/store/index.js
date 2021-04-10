@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-console.log(process.env.VUE_APP_FILEFLY_API_BASE_URL);
 
 export default new Vuex.Store({
   state: {
@@ -44,7 +43,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    listContent: ({commit, state}, path)  => {
+    listContent ({commit, state}, path) {
       const data = {action: 'list', path}
       commit('setIsIndexing', true)
       fetch(state.baseUrl, {
@@ -61,11 +60,12 @@ export default new Vuex.Store({
             commit('updateDirectoryStructure', path)
             console.log('switching to directory', path)
           })
+          .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
           .finally(() => {
             commit('setIsIndexing', false)
           })
     },
-    createDirectory: ({dispatch, state}, newPath)  => {
+    createDirectory ({dispatch, state}, newPath) {
       const data = {action: 'createFolder', newPath}
       fetch(state.baseUrl, {
         method: 'POST',
@@ -80,8 +80,9 @@ export default new Vuex.Store({
               dispatch('listContent', newPath)
             }
           })
+          .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
     },
-    deleteFile: ({dispatch, state}, items)  => {
+    deleteFile ({dispatch, state}, items) {
       const data = {action: 'remove', items}
       fetch(state.baseUrl, {
         method: 'POST',
@@ -91,11 +92,12 @@ export default new Vuex.Store({
         body: JSON.stringify(data),
       })
           .then(response => response.json())
+          .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
           .finally(() => {
             dispatch('listContent', state.currentDirectory)
           })
     },
-    uploadFile: ({dispatch, state}, files)  => {
+    uploadFile ({dispatch, state}, files) {
       const data = new FormData();
       data.append('destination', state.currentDirectory)
       for (let i = 0; i < files.length; i++) {
@@ -111,6 +113,7 @@ export default new Vuex.Store({
               dispatch('listContent', state.currentDirectory)
             }
           })
+          .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
     },
     toggleContentLayout: ({commit, state}) => {
       commit('setContentLayout', state.contentLayout === 'list' ? 'grid' : 'list')
