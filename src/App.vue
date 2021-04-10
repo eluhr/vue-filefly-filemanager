@@ -47,3 +47,16 @@ export default {
   }
 }
 </script>
+
+<style>
+  .item-decorator {
+    cursor: pointer;
+    transition: background-color 100ms ease-in;
+  }
+  .item-decorator:hover, .item-decorator:focus {
+    background-color: rgba(0, 0, 0, 0.125);
+  }
+  .item-decorator:active {
+    background-color: rgba(0, 0, 0, 0.250);
+  }
+</style>

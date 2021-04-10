@@ -14,7 +14,7 @@
         <div
           v-for="(item, itemIndex) in content"
           :key="itemIndex"
-          :class="contentLayout === 'list' ? 'list-group-item' : 'col-4'"
+          :class="[contentLayout === 'list' ? 'list-group-item' : 'col-4', 'item-decorator']"
           @contextmenu.prevent="openContextMenu($event, item)"
           @click="handleClick($event, item)"
         >
@@ -83,9 +83,8 @@ export default {
     handleClick(event, item) {
       if (item.type === 'dir') {
         this.listContent(this.nextDirectory(item.name))
-      } else {
-        this.$refs.fileDetail.open(event, item)
       }
+      this.$refs.fileDetail.open(event, item.type === 'file' ? item : null)
     }
   }
 }
