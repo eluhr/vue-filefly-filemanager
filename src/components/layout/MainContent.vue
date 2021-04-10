@@ -30,7 +30,7 @@
       </div>
     </div>
     <b-alert
-      v-if="content.length === 0"
+      v-if="content.length === 0 && !isIndexing"
       :show="true"
       variant="warning"
       class="mt-4 w-100"
