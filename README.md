@@ -2,6 +2,7 @@
 
 ## Project setup
 ```
+cp .env .env.local
 yarn install
 ```
 

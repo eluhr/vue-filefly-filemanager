@@ -3,10 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+console.log(process.env.VUE_APP_FILEFLY_API_BASE_URL);
+
 export default new Vuex.Store({
   state: {
-    // baseUrl: '/filefly/api'
-    baseUrl: 'http://localhost:58001/filefly/api',
+    baseUrl: process.env.VUE_APP_FILEFLY_API_BASE_URL,
     currentDirectory: '/',
     directoryStructure: [{name: '/', children: []}],
     content: [],
