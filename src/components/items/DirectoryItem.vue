@@ -1,36 +1,19 @@
 <template>
-  <div class="directory">
-    <a @click="listContent(nextDirectory(item.name))">
-      <font-awesome-icon icon="folder" />
-      <span
-        class="ml-2"
-      >{{ item.name }}</span>
-    </a>
+  <div class="directory-item py-2">
+    <font-awesome-icon icon="folder" />
+    <span
+      class="ml-2"
+    >{{ item.name }}</span>
   </div>
 </template>
 
 <script>
-
-import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: {
     item: {
       type: Object,
       required: true
-    }
-  },
-  computed: {
-    ...mapGetters('api', [
-      'currentDirectory'
-    ]),
-  },
-  methods: {
-    ...mapActions('api', [
-      'listContent'
-    ]),
-    nextDirectory(newDirectoryName) {
-      return this.currentDirectory.length === 1 ? newDirectoryName : this.currentDirectory + '/' + newDirectoryName;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="item-file">
+  <div class="item-file py-2">
     <font-awesome-icon icon="file" />
     <span
       class="ml-2"
