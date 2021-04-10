@@ -15,10 +15,10 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
-import MainContent from '@/components/MainContent'
-import Navbar from '@/components/Navbar'
-import NewDirectoryModal from '@/components/NewDirectoryModal'
-import UploadFileModal from '@/components/UploadFileModal'
+import MainContent from '@/components/layout/MainContent'
+import Navbar from '@/components/layout/Navbar'
+import NewDirectoryModal from '@/components/modals/NewDirectoryModal'
+import UploadFileModal from '@/components/modals/UploadFileModal'
 
 export default {
   components: {
