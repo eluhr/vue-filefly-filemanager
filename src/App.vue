@@ -1,13 +1,7 @@
 <template>
   <div id="app">
-    <div class="row">
-      <div class="col-12">
-        <navbar />
-      </div>
-      <div class="col-12">
-        <main-content />
-      </div>
-    </div>
+    <navbar />
+    <main-content />
     <new-directory-modal />
     <upload-file-modal />
   </div>
