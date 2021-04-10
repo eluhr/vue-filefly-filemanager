@@ -6,7 +6,7 @@
     :ok-title="$t('createDirectory')"
     centered
     :ok-disabled="newDirectoryName.length < 1"
-    @ok="createDirectory(`${currentDirectory}/${newDirectoryName}`)"
+    @ok="createNewDirectory(`${currentDirectory}/${newDirectoryName}`)"
   >
     <label for="new-directory-name">{{ $t('directoryName') }}</label>
     <b-form-input
@@ -36,7 +36,11 @@ export default {
   methods: {
     ...mapActions('api', [
       'createDirectory'
-    ])
+    ]),
+    createNewDirectory (newDirectoryName) {
+      this.createDirectory(newDirectoryName)
+      this.newDirectoryName = ''
+    }
   }
 }
 </script>
