@@ -29,13 +29,13 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
         'rootDirectoryStructure',
         'findInDirectoryStructure'
     ])
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'listContent'
     ])
   }

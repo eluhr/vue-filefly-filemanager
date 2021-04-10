@@ -31,7 +31,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'deleteFile',
       'listContent'
     ]),

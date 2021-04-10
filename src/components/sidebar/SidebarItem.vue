@@ -27,12 +27,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
         'findInDirectoryStructure'
     ])
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'listContent'
     ]),
     childItems (name) {

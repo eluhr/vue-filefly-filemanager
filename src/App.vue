@@ -37,7 +37,7 @@ export default {
     UploadFileModal
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
       'currentDirectory'
     ])
   },
@@ -46,7 +46,7 @@ export default {
     this.$eventHub.$on('SHOW_ERROR_MESSAGE_TO_USER', this.showErrorMessage)
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'listContent'
     ]),
     showErrorMessage (errorMessage) {

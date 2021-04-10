@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
       'currentDirectory',
       'content',
       'contentLayout',
@@ -64,7 +64,7 @@ export default {
     ]),
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'listContent'
     ]),
     nextDirectory(newDirectoryName) {

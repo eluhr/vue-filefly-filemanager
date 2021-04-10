@@ -29,12 +29,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
       'currentDirectory'
     ])
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'createDirectory'
     ])
   }

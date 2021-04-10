@@ -58,13 +58,13 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters([
+    ...mapGetters('api', [
       'currentDirectory',
       'contentLayout'
     ])
   },
   methods: {
-    ...mapActions([
+    ...mapActions('api', [
       'listContent',
       'toggleContentLayout'
     ])
