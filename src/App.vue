@@ -5,14 +5,7 @@
         <navbar />
       </div>
       <div class="col-12">
-        <div class="row">
-          <div class="col-4">
-            <sidebar />
-          </div>
-          <div class="col-8">
-            <main-content />
-          </div>
-        </div>
+        <main-content />
       </div>
     </div>
     <new-directory-modal />
@@ -26,14 +19,12 @@ import MainContent from '@/components/MainContent'
 import Navbar from '@/components/Navbar'
 import NewDirectoryModal from '@/components/NewDirectoryModal'
 import UploadFileModal from '@/components/UploadFileModal'
-import Sidebar from '@/components/Sidebar'
 
 export default {
   components: {
     MainContent,
     Navbar,
     NewDirectoryModal,
-    Sidebar,
     UploadFileModal
   },
   computed: {

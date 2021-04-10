@@ -13,8 +13,6 @@ export default {
             .then(json => {
                 commit('setContent', json.result)
                 commit('setCurrentDirectory', path)
-                commit('updateDirectoryStructure', path)
-                console.log('switching to directory', path)
             })
             .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
             .finally(() => {

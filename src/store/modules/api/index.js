@@ -11,7 +11,6 @@ export default {
   state: {
     baseUrl: process.env.VUE_APP_FILEFLY_API_BASE_URL,
     currentDirectory: '/',
-    directoryStructure: [{name: '/', children: []}],
     content: [],
     isIndexing: true,
     contentLayout: window.localStorage.getItem('filemanager.contentLayout') || 'list'
@@ -23,8 +22,6 @@ export default {
     content: state => state.content,
     contentLayout: state => state.contentLayout,
     isIndexing: state => state.isIndexing,
-    directoryStructure: state => state.directoryStructure,
     findInDirectoryStructure: state => name => state.directoryStructure.find(item => item.name === name),
-    rootDirectoryStructure: state => state.directoryStructure.filter(item => item.name === '/') || []
   }
 }
