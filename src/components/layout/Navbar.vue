@@ -12,6 +12,14 @@
         <b-nav-item @click="listContent('/')">
           /
         </b-nav-item>
+        <b-nav-text>
+          <a
+            v-for="(directoryName, index) in directories"
+            :key="index"
+            class="cursor-pointer"
+            @click="listContentByDirectoryIndex(index)"
+          ><span v-if="index !== 0">&nbsp;/&nbsp;</span>{{ directoryName }}</a>
+        </b-nav-text>
       </b-navbar-nav>
 
       <b-navbar-nav
@@ -67,13 +75,26 @@ export default {
     ...mapGetters('api', [
       'currentDirectory',
       'contentLayout'
-    ])
+    ]),
+    directories () {
+      if (this.currentDirectory === '/') {
+        return []
+      }
+      return this.currentDirectory.split('/')
+    }
   },
   methods: {
     ...mapActions('api', [
       'listContent',
       'toggleContentLayout'
-    ])
+    ]),
+    listContentByDirectoryIndex (index) {
+      let path = []
+      for (let i = 0; i < index + 1; i++) {
+        path.push(this.directories[i])
+      }
+      this.listContent(path.join('/'))
+    }
   }
 }
 </script>

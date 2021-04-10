@@ -14,7 +14,7 @@
         <div
           v-for="(item, itemIndex) in content"
           :key="itemIndex"
-          :class="[contentLayout === 'list' ? 'list-group-item' : 'col-4', 'item-decorator']"
+          :class="[contentLayout === 'list' ? 'list-group-item' : 'col-4', 'item-decorator cursor-pointer']"
           @contextmenu.prevent="openContextMenu($event, item)"
           @click="handleClick($event, item)"
         >

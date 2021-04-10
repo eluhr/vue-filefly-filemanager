@@ -50,9 +50,13 @@ export default {
 
 <style>
   .item-decorator {
-    cursor: pointer;
     transition: background-color 100ms ease-in;
   }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
   .item-decorator:hover, .item-decorator:focus {
     background-color: rgba(0, 0, 0, 0.125);
   }
