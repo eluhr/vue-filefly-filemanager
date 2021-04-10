@@ -1,7 +1,7 @@
 <template>
   <aside
     v-if="fileItem"
-    class="w-50 position-fixed bg-white p-4 border"
+    class="w-100 position-fixed bg-white p-4 border"
   >
     <h3>
       {{ fileItem.name }}
@@ -50,7 +50,7 @@ export default {
 
 <style>
  aside {
-   right: 0;
-   top: 0;
+   left: 0;
+   bottom: 0;
  }
 </style>

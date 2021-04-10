@@ -33,7 +33,7 @@
       v-if="content.length === 0 && !isIndexing"
       :show="true"
       variant="warning"
-      class="mt-4 w-100"
+      class="w-100"
     >
       {{ $t('noFilesInThisDirectory') }}
     </b-alert>
