@@ -8,6 +8,12 @@
       id="nav-collapse"
       is-nav
     >
+      <b-navbar-nav>
+        <b-nav-item @click="listContent('/')">
+          /
+        </b-nav-item>
+      </b-navbar-nav>
+
       <b-navbar-nav
         class="ml-auto"
       >

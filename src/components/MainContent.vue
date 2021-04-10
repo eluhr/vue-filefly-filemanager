@@ -24,15 +24,14 @@
         :item="item"
       />
     </div>
-    <div v-if="content.length === 0">
-      <b-alert
-        :show="true"
-        variant="warning"
-        class="mt-4"
-      >
-        {{ $t('noFilesInThisDirectory') }}
-      </b-alert>
-    </div>
+    <b-alert
+      v-if="content.length === 0"
+      :show="true"
+      variant="warning"
+      class="mt-4 w-100"
+    >
+      {{ $t('noFilesInThisDirectory') }}
+    </b-alert>
     <item-context-menu ref="contextMenu" />
   </div>
 </template>
