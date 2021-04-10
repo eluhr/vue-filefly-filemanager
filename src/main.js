@@ -53,6 +53,8 @@ const messages = {
     deleteFile: 'Delete',
     openDirectory: 'Open',
     anErrorOccurred: 'An Error Occurred',
+    uploadedAt: 'Uploaded At',
+    informations: 'Informations',
   }
 }
 

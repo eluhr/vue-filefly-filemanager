@@ -16,6 +16,7 @@
           :key="itemIndex"
           :class="contentLayout === 'list' ? 'list-group-item' : 'col-4'"
           @contextmenu.prevent="openContextMenu($event, item)"
+          @click="handleClick($event, item)"
         >
           <directory-item
             v-if="item.type === 'dir'"
@@ -26,17 +27,18 @@
             :item="item"
           />
         </div>
-        <b-alert
-          v-if="content.length === 0"
-          :show="true"
-          variant="warning"
-          class="mt-4 w-100"
-        >
-          {{ $t('noFilesInThisDirectory') }}
-        </b-alert>
-        <item-context-menu ref="contextMenu" />
       </div>
     </div>
+    <b-alert
+      v-if="content.length === 0"
+      :show="true"
+      variant="warning"
+      class="mt-4 w-100"
+    >
+      {{ $t('noFilesInThisDirectory') }}
+    </b-alert>
+    <item-context-menu ref="contextMenu" />
+    <file-detail ref="fileDetail" />
   </main>
 </template>
 
@@ -45,12 +47,14 @@ import {mapActions, mapGetters} from 'vuex'
 import ItemContextMenu from '@/components/utils/ItemContextMenu'
 import DirectoryItem from '@/components/items/DirectoryItem'
 import FileItem from '@/components/items/FileItem'
+import FileDetail from '@/components/utils/FileDetail'
 
 export default {
   components: {
     DirectoryItem,
     FileItem,
-    ItemContextMenu
+    ItemContextMenu,
+    FileDetail
   },
   data () {
     return {
@@ -75,6 +79,13 @@ export default {
     },
     openContextMenu(event, item) {
       this.$refs.contextMenu.$refs.innerContextMenu.open(event, {item})
+    },
+    handleClick(event, item) {
+      if (item.type === 'dir') {
+        this.listContent(this.nextDirectory(item.name))
+      } else {
+        this.$refs.fileDetail.open(event, item)
+      }
     }
   }
 }
