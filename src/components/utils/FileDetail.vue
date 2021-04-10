@@ -30,9 +30,7 @@ export default {
   },
   computed: {
     uploadedAtDate () {
-      console.log(this.fileItem.date)
-      const date = new Date(this.fileItem.date)
-      return new Intl.DateTimeFormat('en-US').format(date)
+      return this.$d(new Date(this.fileItem.date), 'long')
     },
     fileSize () {
       const bytes = this.fileItem.size

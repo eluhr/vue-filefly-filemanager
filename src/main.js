@@ -55,12 +55,53 @@ const messages = {
     anErrorOccurred: 'An Error Occurred',
     uploadedAt: 'Uploaded At',
     informations: 'Informations',
+  },
+  de: {
+    uploadAFile: 'Datei hochladen',
+    uploadFile: 'Hochladen',
+    uploadFileTo: 'Hochladen nach {currentDirectory}',
+    createNewDirectory: 'Neuen Order erstellen',
+    createDirectory: 'Erstellen',
+    cancel: 'Abbrechen',
+    loading: 'Lädt...',
+    directoryName: 'Ordnername',
+    noFilesInThisDirectory: 'Es liegen keine Dateien in diesem Ordner',
+    selectAFile: 'Datei auswählen',
+    deleteFile: 'Löschen',
+    openDirectory: 'Öffnen',
+    anErrorOccurred: 'Es ist ein Fehler aufgetreten',
+    uploadedAt: 'Hochgeladen am',
+    informations: 'Informationen',
+  }
+}
+const dateTimeFormats = {
+  'en': {
+    long: {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+      hour: 'numeric',
+      minute: 'numeric'
+    }
+  },
+  'de': {
+    long: {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+      hour: 'numeric',
+      minute: 'numeric'
+    }
   }
 }
 
 const i18n = new VueI18n({
-  locale: 'en',
+  locale: process.env.VUE_APP_LANGUAGE,
+  fallbackLocale: 'en',
   messages,
+  dateTimeFormats
 })
 
 new Vue({
