@@ -9,7 +9,7 @@ Vue.use(Vuex)
 export default {
   namespaced: true,
   state: {
-    baseUrl: process.env.VUE_APP_FILEFLY_API_BASE_URL,
+    baseUrl: window?.filemanagerConfig?.apiBaseUrl  || process.env.VUE_APP_FILEFLY_API_BASE_URL,
     currentDirectory: '/',
     content: [],
     isIndexing: true,
