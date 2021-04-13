@@ -43,6 +43,11 @@ export default {
       if (item.type === 'file') {
         this.contextMenuItems = [
           {
+            label: this.$t('copyLinks'),
+            action: 'copyLinks',
+            item: item
+          },
+          {
             label: this.$t('rename'),
             action: 'renameItem',
             item: item
@@ -82,6 +87,9 @@ export default {
         case 'renameItem':
             this.openRenameModal(item)
           break;
+        case 'copyLinks':
+            this.openCopyLinksModal(item)
+          break;
           default:
             console.info(action, 'not implemented')
       }
@@ -89,6 +97,10 @@ export default {
     openRenameModal (item) {
       this.setActiveItem(item)
       this.$bvModal.show('modal-rename-item')
+    },
+    openCopyLinksModal (item) {
+      this.setActiveItem(item)
+      this.$bvModal.show('modal-copy-link')
     }
   }
 }

@@ -17,6 +17,8 @@ export const messages = {
         informations: 'Informations',
         rename: 'Rename',
         newNameForFile: 'New name for file {itemName}',
+        copyLinks: 'Copy links',
+        filePath: 'File Path'
     },
     de: {
         uploadAFile: 'Datei hochladen',
@@ -36,6 +38,8 @@ export const messages = {
         informations: 'Informationen',
         rename: 'Umbenennen',
         newNameForFile: 'Geben Sie den neuen Namen ein für {itemName}',
+        copyLinks: 'Links kopieren',
+        filePath: 'Dateipfad'
     }
 }
 

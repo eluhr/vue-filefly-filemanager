@@ -5,6 +5,7 @@
     <new-directory-modal />
     <upload-file-modal />
     <rename-modal />
+    <copy-links-modal />
   </div>
 </template>
 
@@ -15,9 +16,11 @@ import Navbar from '@/components/layout/Navbar'
 import NewDirectoryModal from '@/components/modals/NewDirectoryModal'
 import UploadFileModal from '@/components/modals/UploadFileModal'
 import RenameModal from '@/components/modals/RenameModal'
+import CopyLinksModal from '@/components/modals/CopyLinksModal'
 
 export default {
   components: {
+    CopyLinksModal,
     MainContent,
     Navbar,
     NewDirectoryModal,
