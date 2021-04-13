@@ -1,6 +1,6 @@
 <template>
   <b-modal
-    id="modal-rename-file"
+    id="modal-rename-item"
     :title="$t('rename', { currentDirectory })"
     :cancel-title="$t('cancel')"
     :ok-title="$t('rename')"
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'renameItem'
+      'activeItem'
     ]),
     ...mapState('api', [
       'currentDirectory'
@@ -38,11 +38,11 @@ export default {
       'mainTheme'
     ]),
     currentItemName() {
-      return this.renameItem?.name || ''
+      return this.activeItem?.name || ''
     }
   },
   watch: {
-    renameItem: function (item) {
+    activeItem: function (item) {
       if (item) {
         this.name = item.name
       }
@@ -53,14 +53,14 @@ export default {
       'internalRenameItem': 'renameItem'
     }),
     ...mapMutations([
-        'setRenameItem'
+        'setActiveItem'
     ]),
     renameItemByItem () {
       this.internalRenameItem({
-        item: this.renameItem,
+        item: this.activeItem,
         newName: this.name
       })
-      this.setRenameItem(null)
+      this.setActiveItem(null)
       this.name = ''
     }
   }

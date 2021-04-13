@@ -36,7 +36,7 @@ export default {
       'listContent'
     ]),
     ...mapMutations([
-      'setRenameItem'
+      'setActiveItem'
     ]),
     openCtx(locals) {
       const item = locals.item
@@ -87,8 +87,8 @@ export default {
       }
     },
     openRenameModal (item) {
-      this.setRenameItem(item)
-      this.$bvModal.show('modal-rename-file')
+      this.setActiveItem(item)
+      this.$bvModal.show('modal-rename-item')
     }
   }
 }

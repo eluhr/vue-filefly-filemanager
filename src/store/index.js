@@ -11,9 +11,9 @@ export default new Vuex.Store({
     preferences
   },
   state: {
-    renameItem: null
+    activeItem: null
   },
   mutations: {
-    setRenameItem: (state, renameItem) => state.renameItem = renameItem
+    setActiveItem: (state, activeItem) => state.activeItem = activeItem
   }
 })
