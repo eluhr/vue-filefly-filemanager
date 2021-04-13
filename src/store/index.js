@@ -9,5 +9,11 @@ export default new Vuex.Store({
   modules: {
     api,
     preferences
+  },
+  state: {
+    renameItem: null
+  },
+  mutations: {
+    setRenameItem: (state, renameItem) => state.renameItem = renameItem
   }
 })

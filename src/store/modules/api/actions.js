@@ -68,6 +68,28 @@ export default {
                 }
             })
             .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
+    },
+    renameItem({state, dispatch}, {item, newName}) {
+        const basePath = (state.currentDirectory === '/' ? '/' : state.currentDirectory + '/');
+        const oldItemPath = basePath + item.name
+        const newItemPath = basePath + newName
+        const data = new FormData();
+
+        data.append('action', 'rename')
+        data.append('item', oldItemPath)
+        data.append('newItemPath', newItemPath)
+
+        fetch(state.baseUrl, {
+            method: 'POST',
+            body: data,
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.result.success) {
+                    dispatch('listContent', state.currentDirectory)
+                }
+            })
+            .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
     }
 }
 

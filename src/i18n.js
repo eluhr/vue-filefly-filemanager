@@ -16,7 +16,7 @@ export const messages = {
         uploadedAt: 'Uploaded At',
         informations: 'Informations',
         rename: 'Rename',
-        newNameForFile: 'New name for file {name}',
+        newNameForFile: 'New name for file {itemName}',
     },
     de: {
         uploadAFile: 'Datei hochladen',
@@ -35,7 +35,7 @@ export const messages = {
         uploadedAt: 'Hochgeladen am',
         informations: 'Informationen',
         rename: 'Umbenennen',
-        newNameForFile: 'Geben Sie den neuen Namen ein für {name}',
+        newNameForFile: 'Geben Sie den neuen Namen ein für {itemName}',
     }
 }
 

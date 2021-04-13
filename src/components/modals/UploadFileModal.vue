@@ -9,9 +9,9 @@
     centered
     @ok="uploadFile(files)"
   >
-    <label for="new-file-name">{{ $t('selectAFile') }}</label>
+    <label for="upload-file-name">{{ $t('selectAFile') }}</label>
     <b-form-file
-      id="new-file-name"
+      id="upload-file-name"
       v-model="files"
       multiple
     />

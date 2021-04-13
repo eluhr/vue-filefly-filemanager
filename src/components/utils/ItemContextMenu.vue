@@ -19,7 +19,7 @@
 
 <script>
 import contextMenu from 'vue-context-menu'
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 
 export default {
   components: {
@@ -35,10 +35,18 @@ export default {
       'deleteFile',
       'listContent'
     ]),
+    ...mapMutations([
+      'setRenameItem'
+    ]),
     openCtx(locals) {
       const item = locals.item
       if (item.type === 'file') {
         this.contextMenuItems = [
+          {
+            label: this.$t('rename'),
+            action: 'renameItem',
+            item: item
+          },
           {
             label: this.$t('deleteFile'),
             action: 'deleteFile',
@@ -47,6 +55,11 @@ export default {
         ]
       } else {
         this.contextMenuItems = [
+          {
+            label: this.$t('rename'),
+            action: 'renameItem',
+            item: item
+          },
           {
             label: this.$t('openDirectory'),
             action: 'openDirectory',
@@ -66,9 +79,16 @@ export default {
         case 'openDirectory':
             this.listContent(item.name)
           break;
+        case 'renameItem':
+            this.openRenameModal(item)
+          break;
           default:
             console.info(action, 'not implemented')
       }
+    },
+    openRenameModal (item) {
+      this.setRenameItem(item)
+      this.$bvModal.show('modal-rename-file')
     }
   }
 }
