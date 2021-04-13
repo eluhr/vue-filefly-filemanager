@@ -10,7 +10,7 @@ export default {
   namespaced: true,
   state: {
     contentLayout: window.localStorage.getItem('filemanager.contentLayout') || 'list',
-    theme: window.localStorage.getItem('filemanager.theme') || 'primary-dark'
+    theme: window?.filemanagerConfig?.theme || 'primary-dark'
   },
   mutations,
   actions,
