@@ -5,6 +5,7 @@
     :cancel-title="$t('cancel')"
     :ok-title="$t('uploadFile')"
     :ok-disabled="files.length < 1"
+    :ok-variant="mainTheme"
     centered
     @ok="uploadFile(files)"
   >
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapState, mapGetters} from 'vuex'
 
 export default {
   data () {
@@ -29,6 +30,9 @@ export default {
   computed: {
     ...mapState('api', [
       'currentDirectory'
+    ]),
+    ...mapGetters('preferences', [
+      'mainTheme'
     ])
   },
   methods: {

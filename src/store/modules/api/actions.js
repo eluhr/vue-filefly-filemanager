@@ -68,9 +68,6 @@ export default {
                 }
             })
             .catch(errorMessage => this._vm.$eventHub.$emit('SHOW_ERROR_MESSAGE_TO_USER', errorMessage))
-    },
-    toggleContentLayout: ({commit, state}) => {
-        commit('setContentLayout', state.contentLayout === 'list' ? 'grid' : 'list')
     }
 }
 

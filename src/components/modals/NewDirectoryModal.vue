@@ -4,6 +4,7 @@
     :title="$t('createNewDirectory')"
     :cancel-title="$t('cancel')"
     :ok-title="$t('createDirectory')"
+    :ok-variant="mainTheme"
     centered
     :ok-disabled="newDirectoryName.length < 1"
     @ok="createNewDirectory(`${currentDirectory}/${newDirectoryName}`)"
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapState, mapGetters} from 'vuex'
 
 export default {
   data () {
@@ -31,6 +32,9 @@ export default {
   computed: {
     ...mapState('api', [
       'currentDirectory'
+    ]),
+    ...mapGetters('preferences', [
+      'mainTheme'
     ])
   },
   methods: {

@@ -12,8 +12,7 @@ export default {
     baseUrl: window?.filemanagerConfig?.apiBaseUrl  || process.env.VUE_APP_FILEFLY_API_BASE_URL,
     currentDirectory: '/',
     content: [],
-    isIndexing: true,
-    contentLayout: window.localStorage.getItem('filemanager.contentLayout') || 'list'
+    isIndexing: true
   },
   mutations,
   actions

@@ -66,8 +66,10 @@ export default {
     ...mapState('api', [
       'currentDirectory',
       'content',
-      'contentLayout',
       'isIndexing'
+    ]),
+    ...mapState('preferences', [
+      'contentLayout',
     ]),
   },
   methods: {

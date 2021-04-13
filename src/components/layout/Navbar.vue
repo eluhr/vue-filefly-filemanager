@@ -1,8 +1,8 @@
 <template>
   <b-navbar
     toggleable="lg"
-    type="dark"
-    variant="dark"
+    :type="navbarTheme"
+    :variant="navbarTheme"
   >
     <b-collapse
       id="nav-collapse"
@@ -68,13 +68,18 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapState, mapGetters} from 'vuex'
 
 export default {
   computed: {
     ...mapState('api', [
       'currentDirectory',
+    ]),
+    ...mapState('preferences', [
       'contentLayout'
+    ]),
+    ...mapGetters('preferences', [
+      'navbarTheme'
     ]),
     directories () {
       if (this.currentDirectory === '/') {
@@ -85,7 +90,9 @@ export default {
   },
   methods: {
     ...mapActions('api', [
-      'listContent',
+      'listContent'
+    ]),
+    ...mapActions('preferences', [
       'toggleContentLayout'
     ]),
     listContentByDirectoryIndex (index) {
