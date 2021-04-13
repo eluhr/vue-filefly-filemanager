@@ -35,8 +35,8 @@ export default {
       'listContent'
     ]),
     showErrorMessage (errorMessage) {
-      // need "+ ''" only god knows why...
-      this.$bvToast.toast(errorMessage + '', {
+      console.error(errorMessage)
+      this.$bvToast.toast(errorMessage.message, {
         title: this.$t('anErrorOccurred'),
         variant: 'danger',
         solid: true,
