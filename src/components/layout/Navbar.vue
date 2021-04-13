@@ -4,71 +4,67 @@
     :type="navbarTheme"
     :variant="navbarTheme"
   >
-    <b-collapse
-      id="nav-collapse"
-      is-nav
-    >
-      <b-navbar-nav>
-        <b-nav-item @click="listContent('/')">
-          /
-        </b-nav-item>
-        <b-nav-text>
-          <a
-            v-for="(directoryName, index) in directories"
-            :key="index"
-            class="cursor-pointer"
-            @click="listContentByDirectoryIndex(index)"
-          ><span v-if="index !== 0">&nbsp;/&nbsp;</span>{{ directoryName }}</a>
-        </b-nav-text>
-      </b-navbar-nav>
+    <b-navbar-nav>
+      <b-nav-item @click="listContent('/')">
+        /
+      </b-nav-item>
+      <b-nav-text>
+        <a
+          v-for="(directoryName, index) in directories"
+          :key="index"
+          class="cursor-pointer"
+          @click="listContentByDirectoryIndex(index)"
+        ><span v-if="index !== 0">&nbsp;/&nbsp;</span>{{ directoryName }}</a>
+      </b-nav-text>
+    </b-navbar-nav>
 
-      <b-navbar-nav
-        class="ml-auto"
+    <b-navbar-nav
+      class="ml-auto"
+    >
+      <b-nav-item @click="listContent(currentDirectory)">
+        <font-awesome-icon
+          icon="sync"
+        />
+      </b-nav-item>
+      <b-nav-item @click="toggleContentLayout">
+        <font-awesome-icon
+          :icon="contentLayout === 'list' ? 'th' : 'list'"
+        />
+      </b-nav-item>
+      <b-nav-item-dropdown
+        id="my-nav-dropdown"
+        toggle-class="nav-link-custom"
+        right
+        :no-caret="true"
       >
-        <b-nav-item @click="listContent(currentDirectory)">
+        <template slot="button-content">
           <font-awesome-icon
-            icon="sync"
+            icon="ellipsis-v"
           />
-        </b-nav-item>
-        <b-nav-item @click="toggleContentLayout">
-          <font-awesome-icon
-            :icon="contentLayout === 'list' ? 'th' : 'list'"
-          />
-        </b-nav-item>
-        <b-nav-item-dropdown
-          id="my-nav-dropdown"
-          toggle-class="nav-link-custom"
-          right
-          :no-caret="true"
+        </template>
+        <b-dropdown-item
+          v-b-modal.modal-create-directory
         >
-          <template slot="button-content">
-            <font-awesome-icon
-              icon="ellipsis-v"
-            />
-          </template>
-          <b-dropdown-item
-            v-b-modal.modal-create-directory
-          >
-            <font-awesome-icon
-              icon="folder-plus"
-            />&nbsp;{{ $t('createNewDirectory')
-            }}
-          </b-dropdown-item>
-          <b-dropdown-item
-            v-b-modal.modal-upload-file
-          >
-            <font-awesome-icon
-              icon="file"
-            />&nbsp;{{ $t('uploadAFile') }}
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-      </b-navbar-nav>
-    </b-collapse>
+          <font-awesome-icon
+            icon="folder-plus"
+          />&nbsp;{{
+            $t('createNewDirectory')
+          }}
+        </b-dropdown-item>
+        <b-dropdown-item
+          v-b-modal.modal-upload-file
+        >
+          <font-awesome-icon
+            icon="file"
+          />&nbsp;{{ $t('uploadAFile') }}
+        </b-dropdown-item>
+      </b-nav-item-dropdown>
+    </b-navbar-nav>
   </b-navbar>
 </template>
 
 <script>
-import {mapActions, mapState, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapState} from 'vuex'
 
 export default {
   computed: {
@@ -81,7 +77,7 @@ export default {
     ...mapGetters('preferences', [
       'navbarTheme'
     ]),
-    directories () {
+    directories() {
       if (this.currentDirectory === '/') {
         return []
       }
@@ -95,7 +91,7 @@ export default {
     ...mapActions('preferences', [
       'toggleContentLayout'
     ]),
-    listContentByDirectoryIndex (index) {
+    listContentByDirectoryIndex(index) {
       let path = []
       for (let i = 0; i < index + 1; i++) {
         path.push(this.directories[i])
