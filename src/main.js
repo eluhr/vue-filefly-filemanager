@@ -45,7 +45,7 @@ const i18n = new VueI18n({
 })
 
 new Vue({
-  store,
   i18n,
+  store,
   render: h => h(App)
 }).$mount('#app')

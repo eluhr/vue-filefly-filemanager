@@ -10,7 +10,7 @@ export default {
   namespaced: true,
   state: {
     baseUrl: window?.filemanagerConfig?.apiBaseUrl  || process.env.VUE_APP_FILEFLY_API_BASE_URL,
-    currentDirectory: '/',
+    currentDirectory: window.localStorage.getItem('filemanager.path') || '/',
     content: [],
     isIndexing: true
   },
