@@ -16,12 +16,5 @@ export default {
     contentLayout: window.localStorage.getItem('filemanager.contentLayout') || 'list'
   },
   mutations,
-  actions,
-  getters: {
-    currentDirectory: state => state.currentDirectory,
-    content: state => state.content,
-    contentLayout: state => state.contentLayout,
-    isIndexing: state => state.isIndexing,
-    findInDirectoryStructure: state => name => state.directoryStructure.find(item => item.name === name),
-  }
+  actions
 }

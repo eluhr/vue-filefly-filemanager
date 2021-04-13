@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 
 export default {
   data () {
@@ -27,7 +27,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('api', [
+    ...mapState('api', [
       'currentDirectory'
     ])
   },

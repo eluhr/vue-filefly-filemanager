@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 import ItemContextMenu from '@/components/utils/ItemContextMenu'
 import DirectoryItem from '@/components/items/DirectoryItem'
 import FileItem from '@/components/items/FileItem'
@@ -63,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('api', [
+    ...mapState('api', [
       'currentDirectory',
       'content',
       'contentLayout',

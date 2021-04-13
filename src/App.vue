@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 import MainContent from '@/components/layout/MainContent'
 import Navbar from '@/components/layout/Navbar'
 import NewDirectoryModal from '@/components/modals/NewDirectoryModal'
@@ -22,7 +22,7 @@ export default {
     UploadFileModal
   },
   computed: {
-    ...mapGetters('api', [
+    ...mapState('api', [
       'currentDirectory'
     ])
   },
